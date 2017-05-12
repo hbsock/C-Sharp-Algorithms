@@ -42,8 +42,8 @@ namespace C_Sharp_Algorithms.DataStructuresTests
             Debug.Assert(sortedDict["Ziad"] == 16);
             Debug.Assert(sortedDict["Konstantinos"] == 13);
             Debug.Assert(sortedDict["Olympos"] == 14);
-            Debug.Assert(sortedDict["Bic"] == 12);
-            Debug.Assert(sortedDict["Carter"] == 13);
+            Debug.Assert(sortedDict["Bic"] == 11);
+            Debug.Assert(sortedDict["Carter"] == 12);
             Debug.Assert(sortedDict["A"] == 26);
             Debug.Assert(sortedDict["B"] == 27);
             Debug.Assert(sortedDict["C"] == 28);
@@ -60,6 +60,8 @@ namespace C_Sharp_Algorithms.DataStructuresTests
             Debug.Assert(sortedDict["ABC"] == 200, "Expcted ABC to be set to 200.");
             Debug.Assert(sortedDict["Ahmad"] == 100, "Expected Ahmad to be set to 100.");
 
+            sortedDict["Ahmad"] = 10;
+            sortedDict["ABC"] = 40;
 
             //
             // Test TryGetValue for existing items
@@ -100,7 +102,7 @@ namespace C_Sharp_Algorithms.DataStructuresTests
                 
                 keyValuePairsList.Add(new KeyValuePair<string, int>(keys[i], values[i]));
             }
-            keyValuePairsList.OrderBy(item => item.Key);
+            keyValuePairsList = keyValuePairsList.OrderBy(item => item.Key).ToList();
 
             // begin sorting test
             for (int i = 0; i < sortedDict.Count; i++)
