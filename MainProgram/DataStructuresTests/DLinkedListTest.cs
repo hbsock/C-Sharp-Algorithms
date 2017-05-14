@@ -108,8 +108,8 @@ namespace C_Sharp_Algorithms.DataStructuresTests
 
 
             /****************************************************************************************/
-
             var stringsIterators = listOfStrings.GetEnumerator();
+            stringsIterators.MoveNext();
 
             Debug.Assert(stringsIterators.Current == listOfStrings[0], "Wrong enumeration.");
 
