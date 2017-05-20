@@ -131,42 +131,14 @@ namespace DataStructures.Lists
         /// <returns>Element</returns>
         protected virtual void _setElementAt(int index, T value)
         {
-            if (IsEmpty() || index < 0 || index >= Count)
-                throw new IndexOutOfRangeException("List is empty.");
-
-            if (index == 0)
+            try
             {
-                _firstNode.Data = value;
+                var nodeAt = _getNodeAt(index);
+                nodeAt.Data = value;
             }
-            else if (index == (Count - 1))
+            catch (IndexOutOfRangeException)
             {
-                _lastNode.Data = value;
-            }
-            else
-            {
-                DLinkedListNode<T> currentNode = null;
-
-                // Decide from which reference to traverse the list, and then move the currentNode reference to the index
-                // If index > half then traverse it from the end (_lastNode reference)
-                // Otherwise, traverse it from the beginning (_firstNode refrence)
-                if (index > (Count / 2))
-                {
-                    currentNode = this._lastNode;
-                    for (int i = (Count - 1); i > index; --i)
-                    {
-                        currentNode = currentNode.Previous;
-                    }
-                }
-                else
-                {
-                    currentNode = this._firstNode;
-                    for (int i = 0; i < index; ++i)
-                    {
-                        currentNode = currentNode.Next;
-                    }
-                }
-
-                currentNode.Data = value;
+                throw;
             }
         }
 

@@ -144,7 +144,38 @@ namespace C_Sharp_Algorithms.DataStructuresTests
             var intArray = listOfNumbers.ToArray();
 
             Debug.Assert(intArray[0] == 0 && intArray[intArray.Length - 1] == 55, "Wrong sorting!");
-		}
+
+            TestIndexing();
+        }
+
+        private static void TestIndexing()
+        {
+            var list = new DLinkedList<int>();
+            list.Append(1);
+            list.Append(2);
+            list.Append(3);
+
+            Debug.Assert(list[0] == 1 && list[1] == 2 && list[2] == 3);
+
+            list[0] = 3;
+            list[1] = 2;
+            list[2] = 1;
+
+            Debug.Assert(list[0] == 3);
+            Debug.Assert(list[1] == 2);
+            Debug.Assert(list[2] == 1);
+
+            try
+            {
+                list[10000] = 1;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                return;
+            }
+
+            Debug.Assert(false); // Should have exited at catch statement above!!!
+        }
 	}
 }
 
