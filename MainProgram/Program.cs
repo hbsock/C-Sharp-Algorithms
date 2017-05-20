@@ -13,6 +13,7 @@ namespace C_Sharp_Algorithms
         public static void Main(string[] args)
         {
             DLinkedListTest.DoTest();
+            Console.ReadLine();
             // SortedDictionaryTests tests
             //SortedDictionaryTests.DoTest();
         }

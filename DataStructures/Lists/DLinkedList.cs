@@ -83,18 +83,18 @@ namespace DataStructures.Lists
         /// </summary>
         /// <param name="index">Index of element</param>
         /// <returns>Element</returns>
-        protected virtual T _getElementAt(int index)
+        protected virtual DLinkedListNode<T> _getNodeAt(int index)
         {
             if (IsEmpty() || index < 0 || index >= Count)
                 throw new IndexOutOfRangeException("List is empty.");
 
             if (index == 0)
             {
-                return First;
+                return _firstNode;
             }
             else if (index == (Count - 1))
             {
-                return Last;
+                return _lastNode;
             }
             else
             {
@@ -120,7 +120,7 @@ namespace DataStructures.Lists
                     }
                 }
 
-                return currentNode.Data;
+                return currentNode;
             }
         }
 
@@ -243,7 +243,7 @@ namespace DataStructures.Lists
         /// <param name="index">Index of element.</param>
         public virtual T this[int index]
         {
-            get { return this._getElementAt(index); }
+            get { return this._getNodeAt(index).Data; }
             set { this._setElementAt(index, value); }
         }
 
