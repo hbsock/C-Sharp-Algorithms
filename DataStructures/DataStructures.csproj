@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dictionaries\BloomFilter.cs" />
     <Compile Include="Dictionaries\CuckooHashTable.cs" />
     <Compile Include="Dictionaries\OpenScatterHashTable.cs" />
     <Compile Include="Graphs\DirectedSparseGraph.cs" />
@@ -116,7 +117,5 @@
     </Content>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="SortedCollections\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
