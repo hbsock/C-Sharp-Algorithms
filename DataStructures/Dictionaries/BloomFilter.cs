@@ -14,7 +14,7 @@ namespace DataStructures.Dictionaries
         private BitArray _bitArray { get; set; }
         private UniversalHashingFamily _universalHashingFamily { get; set; }
 
-        private void _AddNonExistantElem(T elem)
+        private void _AddElem(T elem)
         {
             for (int hashFuncIndex = 1; hashFuncIndex < _universalHashingFamily.NumberOfFunctions; ++hashFuncIndex)
             {
@@ -32,11 +32,11 @@ namespace DataStructures.Dictionaries
                 int hashVal = _universalHashingFamily.UniversalHash(elem.GetHashCode(), hashFuncIndex);
                 int index = Math.Abs(hashVal) % _bitArray.Length;
 
-                if (_bitArray[index])
-                    return false;
+                if (!_bitArray[index])
+                    return true;
             }
 
-            return true;
+            return false;
         }
 
         public BloomFilter(int numOfBits, int numOfHashFuncs)
@@ -47,14 +47,7 @@ namespace DataStructures.Dictionaries
 
         public void Add(T elem)
         {
-            if(_ElemDoesNotExist(elem))
-            {
-                _AddNonExistantElem(elem);
-            }
-            else
-            {
-                throw new NotImplementedException("Have not implemented checking if element does exist to avoid adding duplicates!");
-            }
+            _AddElem(elem);
         }
 
         public bool QueryNonExistance(T elem)
